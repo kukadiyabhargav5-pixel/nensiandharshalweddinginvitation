@@ -28,3 +28,5 @@ verify_pages.js
 *.njsproj
 *.sln
 *.sw?
+
+.vercel
