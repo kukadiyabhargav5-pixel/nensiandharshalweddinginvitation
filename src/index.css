@@ -1,0 +1,215 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-ivory: #FBF8F2;
+  --secondary-cream: #F5EFEB;
+  --gold-champagne: #C5A46D;
+  --royal-maroon: #681F35;
+  --sage-green: #76816A;
+  --dark-chocolate: #30251F;
+  --soft-blush: #EBD8D5;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  background-color: #FBF8F2;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #FBF8F2;
+}
+::-webkit-scrollbar-thumb {
+  background: #C5A46D;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #9E7E45;
+}
+
+/* 3D Door Perspective */
+.door-perspective-stage {
+  perspective: 1400px;
+  perspective-origin: 50% 50%;
+  transform-style: preserve-3d;
+}
+
+.door-leaf-left {
+  transform-origin: 0% 50%;
+  transform-style: preserve-3d;
+  transition: transform 2.6s cubic-bezier(0.19, 1, 0.22, 1), box-shadow 2.6s ease;
+}
+
+.door-leaf-right {
+  transform-origin: 100% 50%;
+  transform-style: preserve-3d;
+  transition: transform 2.6s cubic-bezier(0.19, 1, 0.22, 1), box-shadow 2.6s ease;
+}
+
+.door-leaf-left.open {
+  transform: rotateY(-125deg);
+  box-shadow: -25px 15px 50px rgba(0, 0, 0, 0.45);
+}
+
+.door-leaf-right.open {
+  transform: rotateY(125deg);
+  box-shadow: 25px 15px 50px rgba(0, 0, 0, 0.45);
+}
+
+/* Brass Kundi / Handle Knocking Animation */
+@keyframes kundiKnock {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-16deg); }
+  50% { transform: rotate(4deg); }
+  75% { transform: rotate(-8deg); }
+}
+
+.animate-kundi-hover:hover {
+  animation: kundiKnock 0.8s ease-in-out infinite;
+}
+
+/* Hanging Lantern Sway & Flame Flicker */
+@keyframes lanternSway {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+}
+
+@keyframes flameFlicker {
+  0%, 100% { transform: scale(1); opacity: 0.85; filter: drop-shadow(0 0 6px #F59E0B); }
+  50% { transform: scale(1.15) translateY(-1px); opacity: 1; filter: drop-shadow(0 0 12px #FBBF24); }
+}
+
+.hanging-lantern {
+  transform-origin: top center;
+  animation: lanternSway 6s ease-in-out infinite;
+}
+
+.flicker-flame {
+  animation: flameFlicker 1.8s ease-in-out infinite alternate;
+}
+
+/* Swaying Botanical Tree Leaves & Branches */
+@keyframes swayBranchLeft {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(2.5deg) scale(1.02); }
+}
+
+@keyframes swayBranchRight {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(-2.5deg) scale(1.02); }
+}
+
+.sway-left {
+  transform-origin: top left;
+  animation: swayBranchLeft 8s ease-in-out infinite;
+}
+
+.sway-right {
+  transform-origin: top right;
+  animation: swayBranchRight 9s ease-in-out infinite;
+}
+
+/* Flying Birds Animation */
+@keyframes birdFlight1 {
+  0% {
+    transform: translate(-10vw, 12vh) scale(0.65);
+    opacity: 0;
+  }
+  10% { opacity: 0.85; }
+  90% { opacity: 0.85; }
+  100% {
+    transform: translate(110vw, 4vh) scale(0.75);
+    opacity: 0;
+  }
+}
+
+@keyframes birdFlight2 {
+  0% {
+    transform: translate(-15vw, 25vh) scale(0.5);
+    opacity: 0;
+  }
+  10% { opacity: 0.75; }
+  90% { opacity: 0.75; }
+  100% {
+    transform: translate(110vw, 15vh) scale(0.6);
+    opacity: 0;
+  }
+}
+
+@keyframes birdWingFlap {
+  0%, 100% { transform: scaleY(1); }
+  50% { transform: scaleY(0.2); }
+}
+
+.bird-1 {
+  animation: birdFlight1 22s linear infinite;
+}
+
+.bird-2 {
+  animation: birdFlight2 28s linear infinite 5s;
+}
+
+.bird-wings {
+  transform-origin: center;
+  animation: birdWingFlap 0.35s ease-in-out infinite;
+}
+
+/* Floating Flower Petals */
+@keyframes petalTumble {
+  0% {
+    transform: translateY(-40px) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  15% { opacity: 0.85; }
+  85% { opacity: 0.85; }
+  100% {
+    transform: translateY(105vh) translateX(70px) rotate(420deg);
+    opacity: 0;
+  }
+}
+
+.falling-petal {
+  position: absolute;
+  top: -30px;
+  pointer-events: none;
+  animation: petalTumble 14s linear infinite;
+}
+
+/* Gold Foil Shimmer */
+.gold-text-gradient {
+  background: linear-gradient(135deg, #E5C378 0%, #FFF3D6 25%, #C5A46D 50%, #9E7E45 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.maroon-text-gradient {
+  background: linear-gradient(135deg, #882A47 0%, #681F35 60%, #4B1425 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Soft Light Rays */
+@keyframes sunbeam {
+  0%, 100% { opacity: 0.25; transform: rotate(0deg) scale(1); }
+  50% { opacity: 0.55; transform: rotate(2deg) scale(1.05); }
+}
+
+.ambient-sunbeam {
+  animation: sunbeam 10s ease-in-out infinite;
+}
+
+/* Card 3D tilt hover */
+.royal-card-hover {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+}
+
+.royal-card-hover:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 20px 40px -10px rgba(104, 31, 53, 0.18), 0 0 20px rgba(197, 164, 109, 0.25);
+}
